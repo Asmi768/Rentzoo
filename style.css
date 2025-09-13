@@ -1,0 +1,154 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0D0D1A;
+    color: #E0E0E0;
+    overflow: hidden;
+    animation: backgroundShift 10s infinite alternate; /* Add background animation */
+}
+
+/* --- Custom Styles & Animations --- */
+.main-container {
+    background: radial-gradient(circle at top left, rgba(66, 0, 255, 0.15), transparent 40%),
+                radial-gradient(circle at bottom right, rgba(199, 21, 255, 0.15), transparent 40%),
+                #0D0D1A;
+    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    animation: subtleZoom 15s infinite alternate; /* Add zoom animation */
+}
+
+.screen {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease; /* Add transition for a smoother effect */
+}
+
+.glassmorphism:hover {
+    background: rgba(255, 255, 255, 0.1); /* Slightly increase background on hover */
+}
+
+.glow-button {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(79, 70, 229, 0.3), 0 0 20px rgba(79, 70, 229, 0.2);
+}
+.glow-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.5), 0 0 30px rgba(79, 70, 229, 0.3);
+}
+
+.cancel-button {
+    background: linear-gradient(90deg, #C715FF, #D018EF);
+    box-shadow: 0 0 10px rgba(199, 21, 255, 0.3), 0 0 20px rgba(199, 21, 255, 0.2);
+    animation: pulseColor 5s infinite alternate; /* Add color pulsing animation */
+}
+ .cancel-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(199, 21, 255, 0.5), 0 0 30px rgba(199, 21, 255, 0.3);
+}
+
+.map-glow-line {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-line 5s linear infinite;
+}
+
+@keyframes draw-line {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 15px 3px rgba(0, 191, 255, 0.7); }
+    50% { box-shadow: 0 0 25px 8px rgba(0, 191, 255, 0.4); }
+}
+
+.location-pin-glow {
+     animation: pulse 2s infinite;
+}
+
+.star-rating svg {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.glow-button-purple {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.3), 0 0 20px rgba(168, 85, 247, 0.2);
+}
+.glow-button-purple:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5), 0 0 30px rgba(168, 85, 247, 0.3);
+}
+
+/* --- Desktop View --- */
+@media (min-width: 768px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    #app-container {
+        max-width: 100%;
+        min-height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow-y: auto;
+    }
+     /* Hiding scrollbar for a cleaner look */
+    #app-container::-webkit-scrollbar {
+        display: none;
+    }
+    #app-container {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+}
+
+/* --- Keyframe Animations --- */
+
+@keyframes backgroundShift {
+    0% { background-color: #0D0D1A; }
+    50% { background-color: #1A0D26; }
+    100% { background-color: #0D0D1A; }
+}
+
+@keyframes subtleZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.02); }
+}
+
+@keyframes pulseColor {
+    0% { background: linear-gradient(90deg, #C715FF, #D018EF); }
+    100% { background: linear-gradient(90deg, #D018EF, #C715FF); }
+}
